@@ -12,6 +12,6 @@ DATABASE_URL = f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}'
 
 engine = create_engine(DATABASE_URL)
 
-sessionLocal = sessionmaker(autocommit = False, autoflush = False, bind = engine)
+sessionlocal = sessionmaker(autocommit = False, autoflush = False, bind = engine)
 
 Base = declarative_base()
