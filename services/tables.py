@@ -1,5 +1,5 @@
 from models.models_tables import Departments, Jobs, HiredEmployees
-from schemas.schema_tables import HiredEmployeesCreate, DepartmentsCreate, JobsCreate
+from schemas.schemas_tables import HiredEmployeesCreate, DepartmentsCreate, JobsCreate
 
 class Tables():
     def __init__(self, db) -> None:
