@@ -1,5 +1,7 @@
 from models.models_tables import Departments, Jobs, HiredEmployees
 from schemas.schemas_tables import HiredEmployeesCreate, DepartmentsCreate, JobsCreate
+from fastapi import Depends
+from routers.auth import get_current_user, get_user_exception
 
 class Tables():
     def __init__(self, db) -> None:
