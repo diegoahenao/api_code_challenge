@@ -14,3 +14,10 @@ class DepartmentsCreate(BaseModel):
 class JobsCreate(BaseModel):
     id: int = Field(gt=0)
     job: str = Field(min_length=2)
+
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    first_name: str
+    last_name: str
+    password: str
