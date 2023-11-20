@@ -30,4 +30,3 @@ class Jobs(Base):
     job = Column(String)
 
     employee_job = relationship("HiredEmployees", back_populates = "jobs")
-
