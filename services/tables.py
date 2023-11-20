@@ -1,7 +1,5 @@
 from models.models_tables import Departments, Jobs, HiredEmployees
 from schemas.schemas_tables import HiredEmployeesCreate, DepartmentsCreate, JobsCreate
-from fastapi import Depends
-from routers.auth import get_current_user, get_user_exception
 
 class Tables():
     def __init__(self, db) -> None:
@@ -16,6 +14,7 @@ class Tables():
         self.db.add(new_department)
         self.db.commit()
         self.db.refresh(new_department)
+        self.db.close()
         return new_department
     
     def get_jobs(self):
@@ -23,9 +22,9 @@ class Tables():
         return result
 
     def create_job(self, job: JobsCreate):
-        new_job = Jobs(**job.dict())
+        new_job = Jobs(**job.model_dump())
         self.db.add(new_job)
-        self.db.commit
+        self.db.commit()
         self.db.refresh(new_job)
         self.db.close()
         return new_job
@@ -35,7 +34,7 @@ class Tables():
         return result
 
     def create_hired_employee(self, hired_employee: HiredEmployeesCreate):
-        new_hired_employee = HiredEmployees(**hired_employee.dict())
+        new_hired_employee = HiredEmployees(**hired_employee.model_dump())
         self.db.add(new_hired_employee)
         self.db.commit()
         self.db.refresh(new_hired_employee)

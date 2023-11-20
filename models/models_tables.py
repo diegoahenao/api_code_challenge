@@ -1,35 +1,33 @@
-from sqlalchemy import Boolean, Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Boolean, Column, Integer, String
 from database.database import Base
 
 class HiredEmployees(Base):
     __tablename__ = "hired_employees"
 
     id = Column(Integer, primary_key = True, index = True)
+    id_hired_employees = Column(String)
     name = Column(String)
     datetime = Column(String)
-    department_id = Column(Integer, ForeignKey("departments.id"))
-    job_id = Column(Integer, ForeignKey("jobs.id"))
-
-    jobs = relationship("Jobs", back_populates = "employee_job")
-    departments = relationship("Departments", back_populates = "employee_department")
+    department_id = Column(String)
+    job_id = Column(String)
 
 
 class Departments(Base):
     __tablename__ = "departments"
 
     id = Column(Integer, primary_key = True, index = True)
+    id_departments = Column(Integer)
     department = Column(String)
 
-    employee_department = relationship("HiredEmployees", back_populates = "departments")
 
 class Jobs(Base):
     __tablename__ = "jobs"
 
     id = Column(Integer, primary_key = True, index = True)
+    id_jobs = Column(Integer)
     job = Column(String)
 
-    employee_job = relationship("HiredEmployees", back_populates = "jobs")
+
 
 class Users(Base):
     __tablename__ = "users"

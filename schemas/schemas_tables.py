@@ -1,18 +1,18 @@
 from pydantic import BaseModel, Field
 
 class HiredEmployeesCreate(BaseModel):
-    id: int = Field(gt=0)
-    name: str = Field(min_length=2)
+    id_hired_employees: int = Field(gt=0)
+    name: str
     datetime: str
-    department_id: int = Field(gt=0)
-    job_id: int = Field(gt=0)
+    department_id: str
+    job_id: str
 
 class DepartmentsCreate(BaseModel):
-    id: int = Field(gt=0)
+    id_departments: int = Field(gt=0)
     department: str = Field(min_length=2)
 
 class JobsCreate(BaseModel):
-    id: int = Field(gt=0)
+    id_jobs: int = Field(gt=0)
     job: str = Field(min_length=2)
 
 class UserCreate(BaseModel):
